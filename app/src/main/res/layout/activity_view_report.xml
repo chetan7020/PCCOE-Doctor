@@ -23,13 +23,13 @@
 
                 <!--doctor email-->
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
                     android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/poppins"
                         android:singleLine="true"
@@ -40,7 +40,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/tvDocMobileNumber"
+                        android:id="@+id/tvDocEmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/edittext_background"
@@ -84,7 +84,7 @@
 
                 <!--symptoms-->
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
                     android:orientation="vertical">
@@ -118,7 +118,7 @@
 
                 <!--medicines-->
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
                     android:orientation="vertical">
@@ -153,7 +153,7 @@
 
                 <!--measures-->
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
                     android:orientation="vertical">

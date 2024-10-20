@@ -74,6 +74,6 @@ public class ReportAdapter extends AbstractAdapter<ReportModel, ReportViewHolder
         // Bind data to the views
         holder.tvID.setText(report.getReportID());             // Bind report ID
         holder.tvDataString.setText(report.getDataString());   // Bind report data string
-        holder.tvPDFName.setText(report.getDescription());     // Bind report description (PDF name)
+        holder.tvPDFName.setText(report.getDocID());     // Bind report description (PDF name)
     }
 }

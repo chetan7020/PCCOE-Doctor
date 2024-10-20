@@ -3,7 +3,7 @@ package com.example.test1.model;
 import java.io.Serializable;
 import java.util.List;
 
-public class ReportModel implements Serializable {
+public class ReportModel implements Serializable{
     private String reportID;
     private String docID; //change to docEmail
     private String patientID; //change to patientEmail
@@ -15,6 +15,9 @@ public class ReportModel implements Serializable {
     private List<String> measures;
     private String image;
     private String PDF;
+
+    public ReportModel() {
+    }
 
     // Constructor
     public ReportModel(String reportID, String docID, String patientID, String description,
