@@ -4,6 +4,21 @@ This repository contains the code for a comprehensive telemedicine platform that
 
 ---
 
+## Installation and Setup
+
+### Prerequisites
+- Android Studio (for the mobile apps)
+- Flask (for backend services)
+- Python & Render (for AI models)
+- Firebase (for real-time database and authentication)
+
+### Steps to Set Up the Patient App
+
+1. Clone the patient app repository:
+   ```bash
+   git clone https://github.com/VasudevRaut/PhantomDevs_Patient
+---
+
 ## Features
 
 ### Patient App
@@ -39,17 +54,3 @@ This repository contains the code for a comprehensive telemedicine platform that
   Repository: [NLP Text Summarization for Patient Reports](https://github.com/Rjzambare/pccoe_ai_models.git)
 
 ---
-
-## Installation and Setup
-
-### Prerequisites
-- Android Studio (for the mobile apps)
-- Flask (for backend services)
-- Python & Render (for AI models)
-- Firebase (for real-time database and authentication)
-
-### Steps to Set Up the Patient App
-
-1. Clone the patient app repository:
-   ```bash
-   git clone https://github.com/VasudevRaut/PhantomDevs_Patient
