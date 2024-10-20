@@ -12,7 +12,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <LinearLayout
@@ -43,7 +43,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_below="@+id/bannerImageView"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical"
@@ -60,13 +60,12 @@
                     android:textSize="26sp"
                     android:textStyle="bold" />
 
-                <!--mobile number -->
+                <!--specialization-->
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
                     android:orientation="vertical">
-
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -79,14 +78,23 @@
                         android:textSize="8sp"
                         android:textStyle="bold" />
 
-                    <GridLayout
-                        android:id="@+id/glSpecializations"
+
+                    <HorizontalScrollView
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:columnCount="2" />
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:id="@+id/glSpecializations"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+
+                        </LinearLayout>
+
+                    </HorizontalScrollView>
 
                 </LinearLayout>
+
                 <!--mobile number -->
                 <LinearLayout
                     android:layout_width="wrap_content"

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -104,7 +105,7 @@ public class ProfileMainActivity extends AppCompatActivity {
     }
 
     private void setSpecialization(List<String> specializations) {
-        GridLayout glSpecializations = findViewById(R.id.glSpecializations);
+        LinearLayout glSpecializations = findViewById(R.id.glSpecializations);
         glSpecializations.removeAllViews(); // Clear existing views if any
 
         for (String specialization : specializations) {

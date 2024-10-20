@@ -3,7 +3,7 @@ package com.example.test1.model;
 public class PatientModel {
     private String patientID;
     private String patientEmail;
-    private String doctorEmail;
+    private String doctorEmail; // remove
     private String patientName;
     private int patientAge;
     private String patientGender;
