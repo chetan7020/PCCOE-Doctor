@@ -16,6 +16,7 @@ import com.example.test1.features.payments.PaymentsMainActivity;
 import com.example.test1.features.profile.ProfileMainActivity;
 import com.example.test1.model.AppointmentModel;
 import com.example.test1.model.PatientModel;
+import com.example.test1.model.PaymentModel;
 import com.example.test1.utils.Constant;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -38,39 +39,12 @@ public class MainActivity extends BaseActivity {
 
         init();
         setEventListeners();
+
     }
 
     private void init() {
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
-
-        PatientModel patient1 = new PatientModel(
-                "PAT001",
-                "patient1@example.com",
-                "test123@gmail.com",
-                "John Doe",
-                30,
-                "Male",
-                "O+"
-        );
-
-        firebaseFirestore
-                .collection("patients")
-                .document(patient1.getPatientEmail())
-                .set(patient1)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void unused) {
-
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Constant.showToast(MainActivity.this, "ERROR : " + e.getMessage());
-                    }
-                });
-
-
     }
 
     private void setEventListeners() {

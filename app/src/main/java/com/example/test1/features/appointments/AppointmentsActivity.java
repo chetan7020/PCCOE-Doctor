@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.test1.BaseActivity;
 import com.example.test1.R;
 import com.example.test1.adapter.AppointmentAdapter;
 import com.example.test1.databinding.ActivityAppointmentsBinding;
@@ -21,7 +22,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AppointmentsActivity extends AppCompatActivity {
+public class AppointmentsActivity extends BaseActivity {
 
     private ActivityAppointmentsBinding binding;
     private FirebaseFirestore firebaseFirestore;

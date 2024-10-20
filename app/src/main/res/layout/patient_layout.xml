@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="10dp"
-    android:background="@color/cl_faint_green"
+    android:background="@drawable/white_rect"
     app:cardCornerRadius="10dp">
 
     <LinearLayout
@@ -44,18 +44,23 @@
             <!--name-->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Name : " />
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Name : "
+                    android:textColor="@color/blue" />
 
                 <TextView
                     android:id="@+id/tvPatientName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Patient 1" />
+                    android:fontFamily="@font/poppins"
+                    android:text="Patient 1"
+                    android:textColor="@color/light_blue" />
 
             </LinearLayout>
 
@@ -67,7 +72,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Age : " />
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Age : "
+                    android:textColor="@color/blue" />
 
                 <TextView
                     android:id="@+id/tvPatientAge"
@@ -85,7 +92,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Gender : " />
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Gender : "
+                    android:textColor="@color/blue" />
 
                 <TextView
                     android:id="@+id/tvPatientGender"
@@ -103,7 +112,9 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Blood Group : " />
+                    android:fontFamily="@font/poppins_semibold"
+                    android:text="Blood Group : "
+                    android:textColor="@color/blue" />
 
                 <TextView
                     android:id="@+id/tvPatientBloodGroup"
@@ -113,15 +124,19 @@
 
             </LinearLayout>
 
-
             <Button
                 android:id="@+id/btnAddReport"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/gradient"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/edittext"
+                android:backgroundTint="@null"
+                android:fontFamily="@font/poppins_semibold"
+                android:padding="10dp"
                 android:text="Add Report"
-                android:textAllCaps="false" />
+                android:textAllCaps="false"
+                android:textColor="@color/blue"
+                android:textSize="17dp" />
 
 
         </LinearLayout>

@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.appcompat.app.AppCompatActivity; // Fixed: Using AppCompatActivity for better compatibility
 
+import com.example.test1.BaseActivity;
 import com.example.test1.R;
 import com.example.test1.adapter.PatientAdapter;
 import com.example.test1.databinding.ActivityPatientMainBinding;
@@ -17,7 +18,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PatientMainActivity extends AppCompatActivity { // Changed: Extend AppCompatActivity
+public class PatientMainActivity extends BaseActivity { // Changed: Extend AppCompatActivity
 
     private ActivityPatientMainBinding binding;
 

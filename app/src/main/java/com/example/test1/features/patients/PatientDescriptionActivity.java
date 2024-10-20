@@ -40,6 +40,8 @@ public class PatientDescriptionActivity extends BaseActivity {
     private List<ReportModel> reportList;
     private ReportAdapter reportAdapter;
 
+    private String reportText;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,6 +91,13 @@ public class PatientDescriptionActivity extends BaseActivity {
         // Set up RecyclerView
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
         binding.recyclerView.setAdapter(reportAdapter);
+
+        reportText = "";
+
+        binding.tvPatientName.setText("Chetan Patil");
+        binding.tvPatientAge.setText("22");
+        binding.tvPatientGender.setText("Male");
+        binding.tvPatientBloodGroup.setText("O+");
     }
 
     private void loadReportsFromFirestore() {
@@ -108,6 +117,9 @@ public class PatientDescriptionActivity extends BaseActivity {
                             // Loop through the results and populate the reportList
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 ReportModel report = document.toObject(ReportModel.class);
+
+                                reportText = reportText + " " + report.toString();
+
                                 reportList.add(report);
                             }
 

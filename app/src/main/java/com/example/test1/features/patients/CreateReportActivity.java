@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.test1.BaseActivity;
 import com.example.test1.R;
 import com.example.test1.databinding.ActivityCreateReportBinding;
 import com.example.test1.databinding.ActivityPatientMainBinding;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class CreateReportActivity extends AppCompatActivity {
+public class CreateReportActivity extends BaseActivity {
     private ActivityCreateReportBinding binding;
 
     private FirebaseFirestore firebaseFirestore;

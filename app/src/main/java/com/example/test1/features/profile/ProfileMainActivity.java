@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.test1.BaseActivity;
 import com.example.test1.MainActivity;
 import com.example.test1.R;
 import com.example.test1.auth.LoginActivity;
@@ -26,7 +27,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-public class ProfileMainActivity extends AppCompatActivity {
+public class ProfileMainActivity extends BaseActivity {
 
     private ActivityProfileMainBinding binding;
     private FirebaseFirestore firebaseFirestore;

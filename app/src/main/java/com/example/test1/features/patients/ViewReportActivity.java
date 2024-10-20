@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.test1.BaseActivity;
 import com.example.test1.R;
 import com.example.test1.databinding.ActivityCreateReportBinding;
 import com.example.test1.databinding.ActivityViewReportBinding;
@@ -19,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
-public class ViewReportActivity extends AppCompatActivity {
+public class ViewReportActivity extends BaseActivity {
 
     private ActivityViewReportBinding binding;
 

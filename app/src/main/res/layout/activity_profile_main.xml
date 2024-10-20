@@ -36,8 +36,7 @@
                     android:layout_marginStart="59dp"
                     android:layout_marginTop="-81dp"
                     android:layout_marginEnd="232dp"
-                    android:src="@drawable/baseline_add_24"
-                    />
+                    android:src="@drawable/img5" />
 
             </LinearLayout>
 
@@ -56,7 +55,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
                     android:singleLine="true"
-                    android:textColor="@color/cl_green"
+                    android:textColor="@color/blue"
                     android:textSize="26sp"
                     android:textStyle="bold" />
 
@@ -74,8 +73,8 @@
                         android:singleLine="true"
                         android:text="Specialization"
                         android:textAllCaps="true"
-                        android:textColor="@color/cl_faint_green"
-                        android:textSize="8sp"
+                        android:textColor="@color/blue"
+                        android:textSize="10sp"
                         android:textStyle="bold" />
 
 
@@ -110,19 +109,19 @@
                         android:singleLine="true"
                         android:text="Mobile Number"
                         android:textAllCaps="true"
-                        android:textColor="@color/cl_faint_green"
-                        android:textSize="8sp"
+                        android:textColor="@color/blue"
+                        android:textSize="10sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tvDocMobileNumber"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittext_background"
+                        android:background="@drawable/edittext"
                         android:fontFamily="@font/poppins"
                         android:padding="15sp"
                         android:singleLine="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/blue"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -141,20 +140,19 @@
                         android:singleLine="true"
                         android:text="Address"
                         android:textAllCaps="true"
-                        android:textColor="@color/cl_faint_green"
-                        android:textSize="8sp"
+                        android:textColor="@color/blue"
+                        android:textSize="10sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tvDocAddress"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittext_background"
+                        android:background="@drawable/edittext"
                         android:fontFamily="@font/poppins"
-                        android:lines="4"
                         android:padding="15sp"
                         android:singleLine="false"
-                        android:textColor="@color/white"
+                        android:textColor="@color/blue"
                         android:textStyle="bold" />
 
 
@@ -176,19 +174,19 @@
                         android:singleLine="true"
                         android:text="Email Address"
                         android:textAllCaps="true"
-                        android:textColor="@color/cl_faint_green"
-                        android:textSize="8sp"
+                        android:textColor="@color/blue"
+                        android:textSize="10sp"
                         android:textStyle="bold" />
 
                     <TextView
                         android:id="@+id/tvDocEmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/edittext_background"
+                        android:background="@drawable/edittext"
                         android:fontFamily="@font/poppins"
                         android:padding="15sp"
                         android:singleLine="true"
-                        android:textColor="@color/white"
+                        android:textColor="@color/blue"
                         android:textStyle="bold" />
                 </LinearLayout>
 
@@ -203,9 +201,9 @@
                         android:id="@+id/btnEnglish"
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
-                        android:buttonTint="@color/cl_faint_green"
+                        android:buttonTint="@color/blue"
                         android:text="English"
-                        android:textColor="@color/cl_faint_green"
+                        android:textColor="@color/blue"
                         android:textSize="16sp" />
 
                     <RadioButton
@@ -213,9 +211,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="48dp"
                         android:layout_marginStart="16dp"
-                        android:buttonTint="@color/cl_faint_green"
+                        android:buttonTint="@color/blue"
                         android:text="Hindi"
-                        android:textColor="@color/cl_faint_green"
+                        android:textColor="@color/blue"
                         android:textSize="16sp" />
 
                 </RadioGroup>
@@ -225,12 +223,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:background="@drawable/gradient"
+                    android:background="@drawable/edittext"
                     android:backgroundTint="@null"
                     android:fontFamily="@font/poppins_semibold"
                     android:padding="10dp"
                     android:text="Update"
                     android:textAllCaps="false"
+                    android:textColor="@color/blue"
                     android:textSize="17dp" />
 
                 <Button
@@ -238,12 +237,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="20dp"
-                    android:background="@drawable/gradient"
+                    android:background="@drawable/edittext"
                     android:backgroundTint="@null"
                     android:fontFamily="@font/poppins_semibold"
                     android:padding="10dp"
                     android:text="Logout"
                     android:textAllCaps="false"
+                    android:textColor="@color/blue"
                     android:textSize="17dp" />
 
 

@@ -6,10 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.test1.BaseActivity;
 import com.example.test1.databinding.ActivityMainAppointmentsBinding;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class AppointmentsMainActivity extends AppCompatActivity {
+public class AppointmentsMainActivity extends BaseActivity {
 
     private ActivityMainAppointmentsBinding binding;
 

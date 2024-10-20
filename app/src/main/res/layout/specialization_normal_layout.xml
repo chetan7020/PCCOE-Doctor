@@ -11,11 +11,11 @@
         android:id="@+id/tvSpecialization"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/edittext_background"
+        android:background="@drawable/edittext"
         android:fontFamily="@font/poppins"
         android:gravity="center"
-        android:padding="2dp"
+        android:padding="8dp"
         android:text="Orthology"
-        android:textColor="@color/white" />
+        android:textColor="@color/blue" />
 
 </androidx.cardview.widget.CardView>

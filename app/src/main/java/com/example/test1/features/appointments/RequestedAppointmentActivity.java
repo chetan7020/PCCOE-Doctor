@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.test1.BaseActivity;
 import com.example.test1.R;
 import com.example.test1.adapter.RequestAppointmentAdapter;
 import com.example.test1.databinding.ActivityRequestedAppointmentBinding;
@@ -26,7 +27,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RequestedAppointmentActivity extends AppCompatActivity implements RequestAppointmentAdapter.OnAppointmentActionListener {
+public class RequestedAppointmentActivity extends BaseActivity implements RequestAppointmentAdapter.OnAppointmentActionListener {
 
     private ActivityRequestedAppointmentBinding binding;
 
