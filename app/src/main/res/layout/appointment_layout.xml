@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@color/cl_faint_green"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="15dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="9">
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/avatar_img"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/baseline_cancel_24" />
+
+                    <TextView
+                        android:id="@+id/tvPatientName"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@id/avatar_img"
+                        android:fontFamily="@font/poppins"
+                        android:maxLines="1"
+                        android:paddingLeft="10dp"
+                        android:text="Chetan Patil"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/tvID"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone" />
+
+
+                    <TextView
+                        android:id="@+id/tvAppointmentTime"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvPatientName"
+                        android:layout_toRightOf="@id/avatar_img"
+                        android:fontFamily="@font/poppins"
+                        android:paddingLeft="10dp"
+                        android:text="Time : 9:10 PM"
+                        android:textColor="@color/cl_faint_green"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvAppointmentDate"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvAppointmentTime"
+                        android:layout_toRightOf="@id/avatar_img"
+                        android:fontFamily="@font/poppins"
+                        android:paddingLeft="10dp"
+                        android:text="Date : 10/11/2024"
+                        android:textColor="@color/cl_faint_green"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/tvAppointmentStatus"
+                        android:layout_width="200dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/tvAppointmentDate"
+                        android:layout_toRightOf="@id/avatar_img"
+                        android:fontFamily="@font/poppins"
+                        android:paddingLeft="10dp"
+                        android:text="Status : Requested"
+                        android:textColor="@color/cl_faint_green"
+                        android:textSize="12sp" />
+
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/gradient"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:paddingHorizontal="10dp"
+                    android:text="Details"
+                    android:textColor="@color/cl_black"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
