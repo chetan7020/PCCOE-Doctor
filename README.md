@@ -14,9 +14,21 @@ This repository contains the code for a comprehensive telemedicine platform that
 
 ### Steps to Set Up the Patient App
 
-1. Clone the patient app repository:
+1. Clone the Doctors app repository:
+   ```bash
+   git clone https://github.com/chetan7020/PhantomDevs
+
+2. Clone the patient app repository:
    ```bash
    git clone https://github.com/VasudevRaut/PhantomDevs_Patient
+
+3. Clone AI-Based lifestyle and precaution using symptoms repository:
+   ```bash
+   git clone https://github.com/dhirajdj30/predict-symptom
+
+4. Clone AI-Based patient summary for doctors repository:
+   ```bash
+   git clone https://github.com/dhirajdj30/patient-summary
 ---
 
 ## Features
