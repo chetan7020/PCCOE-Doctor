@@ -13,7 +13,12 @@ import com.example.test1.R;
 import com.example.test1.adapter.RequestAppointmentAdapter;
 import com.example.test1.databinding.ActivityRequestedAppointmentBinding;
 import com.example.test1.model.AppointmentModel;
+import com.example.test1.model.PatientModel;
+import com.example.test1.utils.Constant;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -31,6 +36,8 @@ public class RequestedAppointmentActivity extends AppCompatActivity implements R
     private RequestAppointmentAdapter adapter;
     private List<AppointmentModel> appointmentList;
 
+    private String userEmail;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +53,9 @@ public class RequestedAppointmentActivity extends AppCompatActivity implements R
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
 
+        userEmail = firebaseAuth.getCurrentUser() != null ? firebaseAuth.getCurrentUser().getEmail() : null;
+
+
         appointmentList = new ArrayList<>();
 
         // Set up RecyclerView with adapter
@@ -56,25 +66,30 @@ public class RequestedAppointmentActivity extends AppCompatActivity implements R
 
     // Load data from Firestore and notify the adapter
     private void loadAppointmentsFromFirestore() {
-        String userEmail = firebaseAuth.getCurrentUser() != null ? firebaseAuth.getCurrentUser().getEmail() : null;
+
+        Constant.showToast(this, userEmail);
 
         firebaseFirestore
-                .collection("doctor")
+                .collection("doctors")
                 .document(userEmail)
-                .collection("appointments")
+                .collection("appointment")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         QuerySnapshot querySnapshot = task.getResult();
+
+                        Constant.showToast(RequestedAppointmentActivity.this, String.valueOf(querySnapshot.size()));
+
                         if (querySnapshot != null) {
                             for (QueryDocumentSnapshot document : querySnapshot) {
                                 AppointmentModel appointment = document.toObject(AppointmentModel.class);
 
-                                if(!appointment.getAppointmentStatus().equals(new String("waiting"))){
-                                    continue;
+//                                Constant.showToast(RequestedAppointmentActivity.this, appointment.getAppointmentStatus());
+
+                                if (appointment.getAppointmentStatus().equals(new String("waiting"))) {
+                                    appointmentList.add(appointment); // Add to the list
                                 }
 
-                                appointmentList.add(appointment); // Add to the list
                             }
                             adapter.notifyDataSetChanged(); // Notify adapter of data change
                         }
@@ -85,13 +100,82 @@ public class RequestedAppointmentActivity extends AppCompatActivity implements R
                 });
     }
 
+    private void updateObject(AppointmentModel appointmentModel) {
+        firebaseFirestore
+                .collection("doctors")
+                .document(userEmail)
+                .collection("appointment")
+                .document(appointmentModel.getAppointmentID())
+                .set(appointmentModel)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+                        appointmentList.remove(appointmentModel);
+                        adapter.notifyDataSetChanged();
+                        Constant.showToast(RequestedAppointmentActivity.this, "Updated");
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Constant.showToast(RequestedAppointmentActivity.this, "ERROR : " + e.getMessage());
+                    }
+                });
+
+    }
+
     @Override
     public void onAccept(AppointmentModel appointment) {
-        Toast.makeText(this, "Appointment accepted: " + appointment.getAppointmentPatientName(), Toast.LENGTH_SHORT).show();
+        appointment.setAppointmentStatus("accepted");
+        addPatientToDoctor(appointment);
+        updateObject(appointment);
     }
 
     @Override
     public void onDecline(AppointmentModel appointment) {
-        Toast.makeText(this, "Appointment declined: " + appointment.getAppointmentPatientName(), Toast.LENGTH_SHORT).show();
+        appointment.setAppointmentStatus("declined");
+        updateObject(appointment);
+    }
+
+
+    private void addPatientToDoctor(AppointmentModel appointment) {
+
+//        Constant.showToast(RequestedAppointmentActivity.this, appointment.getPatientEmail());
+
+        firebaseFirestore
+                .collection("patients")
+                .document(appointment.getPatientEmail())
+                .get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        PatientModel patientModel = documentSnapshot.toObject(PatientModel.class);
+
+                        Constant.showToast(RequestedAppointmentActivity.this, patientModel.getPatientEmail());
+
+                        firebaseFirestore
+                                .collection("doctors")
+                                .document(userEmail)
+                                .collection("patients")
+                                .document(patientModel.getPatientEmail())
+                                .set(patientModel)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void unused) {
+                                        Constant.showToast(RequestedAppointmentActivity.this, "Patient Assingned to Doctor");
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Constant.showToast(RequestedAppointmentActivity.this, "ERROR : " + e.getMessage());
+                                    }
+                                });
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Constant.showToast(RequestedAppointmentActivity.this, "ERROR : " + e.getMessage());
+                    }
+                });
     }
 }

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -12,6 +13,7 @@ import com.example.test1.R;
 import com.example.test1.adapter.AppointmentAdapter;
 import com.example.test1.databinding.ActivityAppointmentsBinding;
 import com.example.test1.model.AppointmentModel;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -23,11 +25,17 @@ public class AppointmentsActivity extends AppCompatActivity {
 
     private ActivityAppointmentsBinding binding;
     private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth firebaseAuth;
 
     // List to hold the appointments
     private List<AppointmentModel> appointmentList;
     // Adapter for RecyclerView
     private AppointmentAdapter adapter;
+
+    Intent intent ;
+    String TYPE ;
+
+    private String userEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,12 +43,20 @@ public class AppointmentsActivity extends AppCompatActivity {
         binding = ActivityAppointmentsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        intent = getIntent();
+        TYPE = intent.getStringExtra("TYPE");
+
         init(); // Initialize necessary variables
+
+        userEmail = firebaseAuth.getCurrentUser() != null ? firebaseAuth.getCurrentUser().getEmail() : null;
+
         loadAppointmentsFromFirestore(); // Load data from Firestore
     }
 
     private void init() {
         firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+
         appointmentList = new ArrayList<>();
 
         // Initialize RecyclerView and set layout manager
@@ -54,7 +70,9 @@ public class AppointmentsActivity extends AppCompatActivity {
 
     // Method to load appointments from Firestore
     private void loadAppointmentsFromFirestore() {
-        firebaseFirestore.collection("appointments")
+        firebaseFirestore.collection("doctors")
+                .document(userEmail)
+                .collection("appointment")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -63,7 +81,9 @@ public class AppointmentsActivity extends AppCompatActivity {
                             for (QueryDocumentSnapshot document : querySnapshot) {
                                 // Convert each document to AppointmentModel object
                                 AppointmentModel appointment = document.toObject(AppointmentModel.class);
-                                appointmentList.add(appointment); // Add to the list
+                                if(appointment.getAppointmentStatus().equals(TYPE)){
+                                    appointmentList.add(appointment); // Add to the list
+                                }
                             }
                             adapter.notifyDataSetChanged(); // Notify adapter of data change
                         }

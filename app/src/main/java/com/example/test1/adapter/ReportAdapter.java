@@ -19,12 +19,10 @@ class ReportViewHolder extends RecyclerView.ViewHolder {
 
     public ReportViewHolder(@NonNull View itemView, final ReportAdapter.OnItemClickListener listener) {
         super(itemView);
-        // Initialize the TextViews
         tvID = itemView.findViewById(R.id.tvReportID);
         tvDataString = itemView.findViewById(R.id.tvDataString);
         tvPDFName = itemView.findViewById(R.id.tvPDFName);
 
-        // Set OnClickListener for the itemView or any specific view
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

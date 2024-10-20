@@ -40,8 +40,7 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center_vertical"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/baseline_cancel_24"
-                        app:shapeAppearanceOverlay="@style/ImageView.SmallRound" />
+                        android:src="@drawable/baseline_cancel_24" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -93,8 +92,7 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center_vertical"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/baseline_cancel_24"
-                        app:shapeAppearanceOverlay="@style/ImageView.SmallRound" />
+                        android:src="@drawable/baseline_cancel_24" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -146,8 +144,7 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center_vertical"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/baseline_cancel_24"
-                        app:shapeAppearanceOverlay="@style/ImageView.SmallRound" />
+                        android:src="@drawable/baseline_cancel_24" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -199,8 +196,7 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center_vertical"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/baseline_cancel_24"
-                        app:shapeAppearanceOverlay="@style/ImageView.SmallRound" />
+                        android:src="@drawable/baseline_cancel_24" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -252,8 +248,7 @@
                         android:layout_height="60dp"
                         android:layout_gravity="center_vertical"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/baseline_cancel_24"
-                        app:shapeAppearanceOverlay="@style/ImageView.SmallRound" />
+                        android:src="@drawable/baseline_cancel_24" />
 
                     <LinearLayout
                         android:layout_width="0dp"

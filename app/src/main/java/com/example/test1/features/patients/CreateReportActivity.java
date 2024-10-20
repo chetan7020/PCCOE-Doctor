@@ -36,7 +36,14 @@ public class CreateReportActivity extends AppCompatActivity {
     private List<String> measuresList = new ArrayList<>();
 
     private String description;
+
+    private String patientID;
     private String patientEmail;
+    private String doctorEmail;
+    private String patientName;
+    private int patientAge;
+    private String patientGender;
+    private String patientBloodGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +60,13 @@ public class CreateReportActivity extends AppCompatActivity {
         firebaseAuth = FirebaseAuth.getInstance();
 
         description = "";
-        patientEmail = "";
-    }
+        patientID = getIntent().getStringExtra("PATIENT_ID");
+        patientEmail = getIntent().getStringExtra("PATIENT_EMAIL");
+        doctorEmail = getIntent().getStringExtra("DOCTOR_EMAIL");
+        patientName = getIntent().getStringExtra("PATIENT_NAME");
+        patientAge = getIntent().getIntExtra("PATIENT_AGE", 0);
+        patientGender = getIntent().getStringExtra("PATIENT_GENDER");
+        patientBloodGroup = getIntent().getStringExtra("PATIENT_BLOOD_GROUP");    }
 
     private void setEventListeners() {
         binding.btnAddReport.setOnClickListener(new View.OnClickListener() {
@@ -62,9 +74,9 @@ public class CreateReportActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 description = binding.etDescription.getText().toString();
-                String docEmail = "";
-                String patientEmail = "";
+                String docEmail = firebaseAuth.getCurrentUser().getEmail();
                 String dataString = "";
+
 
                 ReportModel reportModel = new ReportModel(UUID.randomUUID().toString(), docEmail, patientEmail, description, dataString, symptomsList, medicinesList, measuresList);
 
@@ -114,14 +126,14 @@ public class CreateReportActivity extends AppCompatActivity {
         binding.ivAddMeasure.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addMedicines();
+                addMeasures();
             }
         });
 
         binding.ivAddMedicine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addMeasures();
+                addMedicines();
             }
         });
     }
@@ -191,7 +203,7 @@ public class CreateReportActivity extends AppCompatActivity {
     }
 
     private void removeMedicine(View medicineLayout, String medicine) {
-        binding.glSymptoms.removeView(medicineLayout);
+        binding.glMedicines.removeView(medicineLayout);
         symptomsList.remove(medicine);
     }
 
@@ -228,8 +240,8 @@ public class CreateReportActivity extends AppCompatActivity {
     }
 
     private void removeMeasure(View measureLayout, String measure) {
-        binding.glSymptoms.removeView(measureLayout);
-        symptomsList.remove(measure);
+        binding.glMeasures.removeView(measureLayout);
+        measuresList.remove(measure);
     }
 
     public List<String> getAllMeasures() {

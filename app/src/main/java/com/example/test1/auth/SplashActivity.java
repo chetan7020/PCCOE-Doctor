@@ -38,6 +38,7 @@ public class SplashActivity extends BaseActivity {
     }
 
     private void checkLoginStatus() {
+//        firebaseAuth.signOut();
         new Handler().postDelayed(new Runnable() {
             public void run() {
                 if (firebaseAuth.getCurrentUser() != null) {

@@ -1,7 +1,5 @@
 package com.example.test1.model;
 
-import java.io.Serializable;
-
 public class AppointmentModel {
     private String appointmentID;
     private String patientEmail;

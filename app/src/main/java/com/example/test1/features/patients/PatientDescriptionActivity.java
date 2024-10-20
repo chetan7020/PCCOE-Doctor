@@ -93,8 +93,10 @@ public class PatientDescriptionActivity extends BaseActivity {
 
     private void loadReportsFromFirestore() {
         // Fetch reports for the specific patient
-        firebaseFirestore.collection("reports")
-                .whereEqualTo("patientID", patientID)
+        firebaseFirestore
+                .collection("doctors")
+                .document(firebaseAuth.getCurrentUser().getEmail())
+                .collection("reports")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override

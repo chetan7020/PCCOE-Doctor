@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.test1.R;
+import com.example.test1.features.patients.CreateReportActivity;
 import com.example.test1.features.patients.PatientDescriptionActivity;
 import com.example.test1.model.PatientModel;
 
@@ -21,6 +23,7 @@ class PatientViewHolder extends RecyclerView.ViewHolder {
     TextView patientAgeTextView;
     TextView patientGenderTextView;
     TextView patientBloodGroupTextView;
+    Button btnAddReport;
 
     public PatientViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -28,6 +31,7 @@ class PatientViewHolder extends RecyclerView.ViewHolder {
         patientAgeTextView = itemView.findViewById(R.id.tvPatientAge);
         patientGenderTextView = itemView.findViewById(R.id.tvPatientGender);
         patientBloodGroupTextView = itemView.findViewById(R.id.tvPatientBloodGroup);
+        btnAddReport = itemView.findViewById(R.id.btnAddReport);
     }
 }
 
@@ -57,6 +61,20 @@ public class PatientAdapter extends AbstractAdapter<PatientModel, PatientViewHol
         holder.itemView.setOnClickListener(v -> {
             Context context = holder.itemView.getContext();
             Intent intent = new Intent(context, PatientDescriptionActivity.class); // Replace with your detail activity
+            intent.putExtra("PATIENT_ID", patient.getPatientID());
+            intent.putExtra("PATIENT_EMAIL", patient.getPatientEmail());
+            intent.putExtra("DOCTOR_EMAIL", patient.getDoctorEmail());
+            intent.putExtra("PATIENT_NAME", patient.getPatientName());
+            intent.putExtra("PATIENT_AGE", patient.getPatientAge());
+            intent.putExtra("PATIENT_GENDER", patient.getPatientGender());
+            intent.putExtra("PATIENT_BLOOD_GROUP", patient.getPatientBloodGroup());
+            context.startActivity(intent);
+        });
+
+
+        holder.btnAddReport.setOnClickListener(v -> {
+            Context context = holder.itemView.getContext();
+            Intent intent = new Intent(context, CreateReportActivity.class); // Replace with your AddReport activity
             intent.putExtra("PATIENT_ID", patient.getPatientID());
             intent.putExtra("PATIENT_EMAIL", patient.getPatientEmail());
             intent.putExtra("DOCTOR_EMAIL", patient.getDoctorEmail());

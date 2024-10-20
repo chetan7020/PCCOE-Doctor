@@ -51,6 +51,37 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
+                <!--description-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins"
+                        android:singleLine="true"
+                        android:text="Description"
+                        android:textAllCaps="true"
+                        android:textColor="@color/cl_faint_green"
+                        android:textSize="8sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDescription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/edittext_background"
+                        android:fontFamily="@font/poppins"
+                        android:padding="15sp"
+                        android:singleLine="true"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+
                 <!--symptoms-->
                 <LinearLayout
                     android:layout_width="wrap_content"

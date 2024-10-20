@@ -20,17 +20,5 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <!-- ImageView Styles -->
-    <style name="ImageView.Round">
-        <item name="cornerSize">50%</item>
-    </style>
-
-    <style name="ImageView.SmallRound">
-        <item name="cornerSize">10%</item>
-    </style>
-
-    <style name="ImageView.roundedRectangle">
-        <item name="cornerSize">5%</item>
-    </style>
 
 </resources>

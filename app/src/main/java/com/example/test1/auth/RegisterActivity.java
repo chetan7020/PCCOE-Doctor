@@ -71,9 +71,13 @@ public class RegisterActivity extends BaseActivity {
                     String userId = firebaseAuth.getCurrentUser().getUid();
                     List<String> specializations = getAllSpecializations();
 
-                    DoctorModel doctor = new DoctorModel(userId, name, specializations, mobileNumber, 0.0, 0.0, email);
+                    DoctorModel doctor = new DoctorModel(email, name, specializations, mobileNumber, 0.0, 0.0, email);
 
-                    firebaseFirestore.collection("Doctors").document(email).set(doctor).addOnSuccessListener(aVoid -> {
+                    firebaseFirestore
+                            .collection("doctors")
+                            .document(email)
+                            .set(doctor)
+                            .addOnSuccessListener(aVoid -> {
                         Constant.showToast(this, "User Registered Successfully");
                         Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                         startActivity(intent);

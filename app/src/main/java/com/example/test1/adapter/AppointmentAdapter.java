@@ -18,7 +18,8 @@ import java.util.List;
 class AppointmentViewHolder extends RecyclerView.ViewHolder {
     ShapeableImageView avatarImageView;
     TextView patientNameTextView;
-    TextView appointmentTimeTextView;
+    TextView appointmentStartTimeTextView;
+    TextView appointmentEndTimeTextView;
     TextView appointmentDateTextView;
     TextView appointmentStatusTextView;
     TextView detailsTextView;
@@ -27,7 +28,10 @@ class AppointmentViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         avatarImageView = itemView.findViewById(R.id.avatar_img);
         patientNameTextView = itemView.findViewById(R.id.tvPatientName);
-        appointmentTimeTextView = itemView.findViewById(R.id.tvAppointmentTime);
+
+        appointmentStartTimeTextView = itemView.findViewById(R.id.tvAppointmentStartTime);
+        appointmentEndTimeTextView = itemView.findViewById(R.id.tvAppointmentEndTime);
+
         appointmentDateTextView = itemView.findViewById(R.id.tvAppointmentDate);
         appointmentStatusTextView = itemView.findViewById(R.id.tvAppointmentStatus);
         detailsTextView = itemView.findViewById(R.id.details);
@@ -57,7 +61,8 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentViewHold
         AppointmentModel appointment = appointmentList.get(position);
 
         holder.patientNameTextView.setText(appointment.getAppointmentPatientName());
-        holder.appointmentTimeTextView.setText("Time: " + appointment.getAppointmentTime());
+        holder.appointmentStartTimeTextView.setText("Start Time: " + appointment.getAppointmentStartTime());
+        holder.appointmentEndTimeTextView.setText("End Time: " + appointment.getAppointmentEndTime());
         holder.appointmentDateTextView.setText("Date: " + appointment.getAppointmentDate());
         holder.appointmentStatusTextView.setText("Status: " + appointment.getAppointmentStatus());
 

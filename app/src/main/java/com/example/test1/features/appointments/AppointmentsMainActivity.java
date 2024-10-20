@@ -2,6 +2,7 @@ package com.example.test1.features.appointments;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -33,18 +34,27 @@ public class AppointmentsMainActivity extends AppCompatActivity {
         binding.llUpcomingAppointments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String TYPE = "accepted"; // The string you want to pass
+                Intent intent = new Intent(AppointmentsMainActivity.this, AppointmentsActivity.class);
+                intent.putExtra("TYPE", TYPE); // Use a unique key to identify the extra data
+                startActivity(intent);
             }
         });
 
         binding.llRequestedAppointments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(AppointmentsMainActivity.this, RequestedAppointmentActivity.class));
             }
         });
 
         binding.llDeclinedAppointments.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String TYPE = "declined"; // The string you want to pass
+                Intent intent = new Intent(AppointmentsMainActivity.this, AppointmentsActivity.class);
+                intent.putExtra("TYPE", TYPE); // Use a unique key to identify the extra data
+                startActivity(intent);
             }
         });
     }
