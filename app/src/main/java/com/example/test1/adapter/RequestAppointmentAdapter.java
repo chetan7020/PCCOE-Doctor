@@ -16,7 +16,8 @@ import java.util.List;
 class RequestAppointmentViewHolder extends RecyclerView.ViewHolder {
     TextView patientNameTextView;
     TextView dateTextView;
-    TextView timeTextView;
+    TextView startTimeTextView;
+    TextView endTimeTextView;
     TextView statusTextView;
     Button acceptButton;
     Button declineButton;
@@ -25,7 +26,8 @@ class RequestAppointmentViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
         patientNameTextView = itemView.findViewById(R.id.tvPatientName);
         dateTextView = itemView.findViewById(R.id.tvAppointmentDate);
-        timeTextView = itemView.findViewById(R.id.tvAppointmentTime);
+        startTimeTextView = itemView.findViewById(R.id.tvAppointmentStartTime);
+        endTimeTextView = itemView.findViewById(R.id.tvAppointmentEndTime);
         statusTextView = itemView.findViewById(R.id.tvAppointmentStatus);
         acceptButton = itemView.findViewById(R.id.btnAcceptAppointment);
         declineButton = itemView.findViewById(R.id.btnDeclineAppointment);
@@ -58,7 +60,8 @@ public class RequestAppointmentAdapter extends RecyclerView.Adapter<RequestAppoi
         AppointmentModel appointment = appointmentList.get(position);
         holder.patientNameTextView.setText(appointment.getAppointmentPatientName());
         holder.dateTextView.setText(appointment.getAppointmentDate());
-        holder.timeTextView.setText(appointment.getAppointmentTime());
+        holder.startTimeTextView.setText(appointment.getAppointmentStartTime());
+        holder.endTimeTextView.setText(appointment.getAppointmentEndTime());
         holder.statusTextView.setText(appointment.getAppointmentStatus());
 
         // Handle accept button click

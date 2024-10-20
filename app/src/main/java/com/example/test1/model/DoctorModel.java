@@ -1,8 +1,9 @@
 package com.example.test1.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class DoctorModel {
+public class DoctorModel  {
     private String docID;
     private String docName;
     private List<String> docSpecializations;

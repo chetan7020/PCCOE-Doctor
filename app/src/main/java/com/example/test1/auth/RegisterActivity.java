@@ -64,8 +64,6 @@ public class RegisterActivity extends BaseActivity {
         String email = binding.etEmail.getText().toString().trim();
         String password = binding.etPassword.getText().toString().trim();
 
-        Log.d("TAG", "registerUser: " + name + "\n" + mobileNumber + "\n" + email + "\n" + password);
-
         if (validateInputs(name, mobileNumber, email, password)) {
 
             firebaseAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(task -> {

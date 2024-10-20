@@ -1,13 +1,29 @@
 package com.example.test1.model;
 
+import java.io.Serializable;
+
 public class AppointmentModel {
     private String appointmentID;
+    private String patientEmail;
+    private String doctorEmail;
     private String appointmentPatientName;
     private String appointmentDate;
-    private String appointmentTime;
+    private String appointmentStartTime;
+    private String appointmentEndTime;
     private String appointmentStatus;
 
     public AppointmentModel() {
+    }
+
+    public AppointmentModel(String appointmentID, String patientEmail, String doctorEmail, String appointmentPatientName, String appointmentDate, String appointmentStartTime, String appointmentEndTime, String appointmentStatus) {
+        this.appointmentID = appointmentID;
+        this.patientEmail = patientEmail;
+        this.doctorEmail = doctorEmail;
+        this.appointmentPatientName = appointmentPatientName;
+        this.appointmentDate = appointmentDate;
+        this.appointmentStartTime = appointmentStartTime;
+        this.appointmentEndTime = appointmentEndTime;
+        this.appointmentStatus = appointmentStatus;
     }
 
     public String getAppointmentID() {
@@ -16,6 +32,22 @@ public class AppointmentModel {
 
     public void setAppointmentID(String appointmentID) {
         this.appointmentID = appointmentID;
+    }
+
+    public String getPatientEmail() {
+        return patientEmail;
+    }
+
+    public void setPatientEmail(String patientEmail) {
+        this.patientEmail = patientEmail;
+    }
+
+    public String getDoctorEmail() {
+        return doctorEmail;
+    }
+
+    public void setDoctorEmail(String doctorEmail) {
+        this.doctorEmail = doctorEmail;
     }
 
     public String getAppointmentPatientName() {
@@ -34,12 +66,20 @@ public class AppointmentModel {
         this.appointmentDate = appointmentDate;
     }
 
-    public String getAppointmentTime() {
-        return appointmentTime;
+    public String getAppointmentStartTime() {
+        return appointmentStartTime;
     }
 
-    public void setAppointmentTime(String appointmentTime) {
-        this.appointmentTime = appointmentTime;
+    public void setAppointmentStartTime(String appointmentStartTime) {
+        this.appointmentStartTime = appointmentStartTime;
+    }
+
+    public String getAppointmentEndTime() {
+        return appointmentEndTime;
+    }
+
+    public void setAppointmentEndTime(String appointmentEndTime) {
+        this.appointmentEndTime = appointmentEndTime;
     }
 
     public String getAppointmentStatus() {

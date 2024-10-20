@@ -13,6 +13,7 @@ import com.example.test1.R;
 import com.example.test1.adapter.RequestAppointmentAdapter;
 import com.example.test1.databinding.ActivityRequestedAppointmentBinding;
 import com.example.test1.model.AppointmentModel;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -23,7 +24,10 @@ import java.util.List;
 public class RequestedAppointmentActivity extends AppCompatActivity implements RequestAppointmentAdapter.OnAppointmentActionListener {
 
     private ActivityRequestedAppointmentBinding binding;
+
     private FirebaseFirestore firebaseFirestore;
+    private FirebaseAuth firebaseAuth;
+
     private RequestAppointmentAdapter adapter;
     private List<AppointmentModel> appointmentList;
 
@@ -40,6 +44,8 @@ public class RequestedAppointmentActivity extends AppCompatActivity implements R
     // Initialize Firestore and RecyclerView
     private void init() {
         firebaseFirestore = FirebaseFirestore.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
+
         appointmentList = new ArrayList<>();
 
         // Set up RecyclerView with adapter
@@ -50,7 +56,12 @@ public class RequestedAppointmentActivity extends AppCompatActivity implements R
 
     // Load data from Firestore and notify the adapter
     private void loadAppointmentsFromFirestore() {
-        firebaseFirestore.collection("appointments")
+        String userEmail = firebaseAuth.getCurrentUser() != null ? firebaseAuth.getCurrentUser().getEmail() : null;
+
+        firebaseFirestore
+                .collection("doctor")
+                .document(userEmail)
+                .collection("appointments")
                 .get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -58,6 +69,11 @@ public class RequestedAppointmentActivity extends AppCompatActivity implements R
                         if (querySnapshot != null) {
                             for (QueryDocumentSnapshot document : querySnapshot) {
                                 AppointmentModel appointment = document.toObject(AppointmentModel.class);
+
+                                if(!appointment.getAppointmentStatus().equals(new String("waiting"))){
+                                    continue;
+                                }
+
                                 appointmentList.add(appointment); // Add to the list
                             }
                             adapter.notifyDataSetChanged(); // Notify adapter of data change

@@ -2,15 +2,28 @@ package com.example.test1.features.profile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.GridLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.test1.MainActivity;
+import com.example.test1.R;
+import com.example.test1.auth.LoginActivity;
 import com.example.test1.databinding.ActivityProfileMainBinding;
 import com.example.test1.model.DoctorModel;
 import com.example.test1.utils.Constant;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 public class ProfileMainActivity extends AppCompatActivity {
 
@@ -44,9 +57,11 @@ public class ProfileMainActivity extends AppCompatActivity {
 
         binding.btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Constant.showToast(ProfileMainActivity.this, "Logged Out");
-
+            public void onClick(View v) {
+                firebaseAuth.signOut();
+                Intent intent = new Intent(ProfileMainActivity.this, LoginActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
             }
         });
     }
@@ -83,11 +98,44 @@ public class ProfileMainActivity extends AppCompatActivity {
         binding.tvDocMobileNumber.setText(doctor.getDocMobileNumber());
         binding.tvDocAddress.setText(getAddress(doctor.getDocLat(), doctor.getDocLang()));
         binding.tvDocEmail.setText(firebaseAuth.getCurrentUser().getEmail());
+
+        setSpecialization(doctor.getDocSpecializations());
+
     }
+
+    private void setSpecialization(List<String> specializations) {
+        GridLayout glSpecializations = findViewById(R.id.glSpecializations);
+        glSpecializations.removeAllViews(); // Clear existing views if any
+
+        for (String specialization : specializations) {
+            View cardView = LayoutInflater.from(this).inflate(R.layout.specialization_normal_layout, glSpecializations, false);
+
+            TextView textView = cardView.findViewById(R.id.tvSpecialization); // Assuming the TextView has this id
+            textView.setText(specialization);
+
+            glSpecializations.addView(cardView);
+        }
+    }
+
 
     private String getAddress(double docLat, double docLang) {
         String address = "";
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
 
+        try {
+            List<Address> addresses = geocoder.getFromLocation(docLat, docLang, 1); // Get one address
+            if (addresses != null && !addresses.isEmpty()) {
+                Address addressObj = addresses.get(0);
+                // Construct the address string (you can customize this as needed)
+                address = addressObj.getAddressLine(0); // Get the full address line
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            address = "Unable to get address";
+        } catch (IllegalArgumentException e) {
+            e.printStackTrace();
+            address = "Invalid latitude or longitude";
+        }
 
         return address;
     }
